@@ -3,7 +3,7 @@ import { View, ScrollView, Text, TouchableOpacity } from "react-native"
 
 import styles from "./styles"
 
-export default function QuotationList() {
+export default function QuotationsList() {
     return(
         <Fragment>
         <View style={styles.filters}>
