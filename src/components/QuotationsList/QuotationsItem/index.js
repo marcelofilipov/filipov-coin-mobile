@@ -10,7 +10,7 @@ export default function QuotationsItems() {
                 <View style={styles.boxLogo}>
                     <Image
                         style={styles.logBitcoin}
-                        source={require("../../../img/bitcoinred.png")}
+                        source={require("../../../img/bitcoinyellow.png")}
                     />
                     <Text style={styles.dayQuotation}>18/12/2021</Text>
                 </View>
