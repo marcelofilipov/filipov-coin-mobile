@@ -16,7 +16,7 @@ export default function QuotationsItems(props) {
                 </View>
             </View>
             <View style={styles.contextRight}>
-                <Text style={styles.price}>{props.valor}</Text>
+                <Text style={styles.price}>{props.valor.toFixed(2)}</Text>
             </View>
         </View>
     )
