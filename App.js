@@ -4,7 +4,6 @@ import { StyleSheet, StatusBar, SafeAreaView, Platform } from 'react-native';
 import CurrentPrice from './src/components/CurrentPrice';
 import HistoryGraphic from './src/components/HistoryGraphic';
 import QuotationsList from './src/components/QuotationsList';
-import QuotationsItems from './src/components/QuotationsList/QuotationsItem';
 
 function addZero(number) {
   if(number <=9) {
@@ -23,7 +22,7 @@ function url(qtdDays) {
   return `https://api.coindesk.com/v1/bpi/historical/close.json?start=${start_date}&end=${end_date}&currency=usd`
 }
 
-async function getListCoins(url) {
+async function getCoinsList(url) {
   let response = await fetch(url);
   let retunrApi = await response.json();
   let selectListQuotations = retunrApi.bpi;
@@ -53,19 +52,25 @@ export default function App() {
   const [coinsGraphicList, setCoinsGraphicList] = useState([0]);
   const [days, setDays] = useState(30);
   const [updateDate, setUpdateDate] = useState(true);
+  const [price, setPrice] = useState();
 
   function updateDay(number) {
     setDays(number);
     setUpdateDate(true);
   }
 
+  function priceCotation() {
+    setPrice(coinsGraphicList.pop());
+  }
+
   useEffect(() => {
-    getListCoins(url(days)).then((data) => {
+    getCoinsList(url(days)).then((data) => {
       setCoinsList(data);
     });
     getPriceCoinsGraphic(url(days)).then((dataG) => {
       setCoinsGraphicList(dataG);
     });
+    priceCotation();
     if (updateDate) {
       setUpdateDate(false);
     }
@@ -77,8 +82,8 @@ export default function App() {
         backgroundColor='#f50d41'
         barStyle='dark-content'
       />
-      <CurrentPrice/>
-      <HistoryGraphic/>
+      <CurrentPrice lastCotation={price}/>
+      <HistoryGraphic infoDataGraphic={coinsGraphicList}/>
       <QuotationsList filterDay={updateDay} listTransactions={coinsList}/>
     </SafeAreaView>
   );

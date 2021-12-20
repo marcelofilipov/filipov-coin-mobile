@@ -1,8 +1,10 @@
 import React, { Fragment } from "react";
-import { View, Text, TouchableOpacity, ScrollView, FlatList } from "react-native"
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { ScrollView } from 'react-native-virtualized-view';
+
 import QuotationsItems from "./QuotationsItem";
 
-import styles from "./styles"
+import styles from "./styles";
 
 export default function QuotationsList(props) {
 const daysQuery = props.filterDay;
@@ -42,10 +44,9 @@ const daysQuery = props.filterDay;
         </View>
         <ScrollView>
             <FlatList
+                keyExtractor={item => item.data.toString()}
                 data={props.listTransactions}
-                renderItem={({item}) => {
-                    return <QuotationsItems valor={item.valor} data={item.data}/>
-                }}
+                renderItem={({item}) => <QuotationsItems valor={item.valor} data={item.data}/> }
             />
         </ScrollView>
         </Fragment>

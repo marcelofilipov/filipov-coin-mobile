@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text } from "react-native"
+
 import styles from "./styles"
 
-export default function CurrentPrice() {
+const CurrentPrice = ({lastCotation}) => {
     return(
         <View style={styles.headerPrice}>
-            <Text style={styles.currentPrice}>$ 54423.355</Text>
+            <Text style={styles.currentPrice}>{lastCotation}</Text>
             <Text style={styles.textPrice}>última cotação</Text>
-
         </View>
     )
 }
+
+export default CurrentPrice

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         flexDirection: "row",
         alignItems: "center",
-        padding: 10,
+        padding: 4,
     },
     contextLeft: {
         width: "36%",
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
     dayQuotation: {
         fontSize: 16,
-        paddingLeft: 2,
+        paddingLeft: 6,
         color: "#fff",
         fontWeight: "bold",
     },
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
         alignItems: "flex-end",
     },
     logBitcoin: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         marginLeft: 2,
     },
     boxLogo: {
